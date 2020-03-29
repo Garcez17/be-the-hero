@@ -24,7 +24,7 @@ module.exports = {
     return res.json(incidents);
   },
 
-  async create(req, res) {
+  async store(req, res) {
     const { title, description, value } = req.body;
     const ong_id = req.headers.authorization;
 
