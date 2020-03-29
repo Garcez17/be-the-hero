@@ -38,6 +38,35 @@ module.exports = {
     return res.json({ id });
   },
 
+  
+  async update(req, res) {
+    const { id } = req.params;
+    const ong_id = req.headers.authorization;
+    const { title, description, value } = req.body;
+
+    console.log(title)
+
+    const incident = await connection('incidents')
+      .where('id', id)
+      .select('ong_id', 'title', 'description', 'value')
+      .first()
+      
+
+    if(incident.ong_id !== ong_id) {
+      return res.status(401).json({ error: 'Operation not permitted.' });
+    }
+
+    await connection('incidents').update({
+      title: title,
+      description: description,
+      value: value,
+    });
+
+    console.log(incident);
+
+    return res.json({ message: 'Teste' });
+  },
+
   async destroy(req, res) {
     const { id } = req.params;
     const ong_id = req.headers.authorization;

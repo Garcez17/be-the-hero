@@ -23,5 +23,6 @@ module.exports = {
     });
 
     return res.json({ id });
-  }
+  },
+
 }
