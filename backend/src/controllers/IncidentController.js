@@ -44,13 +44,10 @@ module.exports = {
     const ong_id = req.headers.authorization;
     const { title, description, value } = req.body;
 
-    console.log(title)
-
     const incident = await connection('incidents')
       .where('id', id)
       .select('ong_id', 'title', 'description', 'value')
-      .first()
-      
+      .first()  
 
     if(incident.ong_id !== ong_id) {
       return res.status(401).json({ error: 'Operation not permitted.' });
@@ -62,9 +59,7 @@ module.exports = {
       value: value,
     });
 
-    console.log(incident);
-
-    return res.json({ message: 'Teste' });
+    return res.status(204).send();
   },
 
   async destroy(req, res) {

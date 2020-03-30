@@ -66,6 +66,14 @@
   background: #fff;
 }
 
+.profile-container ul li button .editButton{
+  position: absolute;
+  top: 0;
+  right: 32px;
+  border: 0;
+  background: #fff;
+}
+
 .profile-container ul li button:hover {
   opacity: 0.8;
 }
